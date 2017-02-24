@@ -7,8 +7,15 @@ import io.grpc.BindableService;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
+import model.DomainUser;
+import net.badata.protobuf.converter.Converter;
+import net.badata.protobuf.example.proto.LoginServiceGrpc;
+import net.badata.protobuf.example.proto.RegisteredUser;
+import net.badata.protobuf.example.proto.User;
 
 import java.io.IOException;
+import java.util.Random;
+import java.util.UUID;
 
 /**
  * Created by kai-tait on 22/02/2017.
@@ -21,6 +28,7 @@ public class MyGrpcServer {
     public static void noSsl() throws IOException, InterruptedException {
         Server server = ServerBuilder.forPort(8888)
                 .addService((BindableService) new GreetingServerImpl())
+                .addService((BindableService) new ProtobufServer())
                 .build();
 
         server.start();
@@ -39,5 +47,32 @@ public class MyGrpcServer {
             responseObserver.onNext(response);
             responseObserver.onCompleted();
         }
+
+
     }
+
+    public static class ProtobufServer extends LoginServiceGrpc.LoginServiceImplBase{
+
+        @Override
+        public void signIn(final User request, final StreamObserver<RegisteredUser> responseObserver) {
+            String username = "signIn, " + request.getName();
+            String password = "signIn, " + request.getPassword();
+            System.out.println(username);
+            System.out.println(password);
+
+            String token = createToken();
+            System.out.println("token: " + token);
+            RegisteredUser response = RegisteredUser.newBuilder()
+                    .setUser(request)
+                    .setToken(token)
+                    .build();
+            responseObserver.onNext(response);
+            responseObserver.onCompleted();
+        }
+
+        private String createToken() {
+            return "secureToken" + UUID.randomUUID();
+        }
+    }
+
 }

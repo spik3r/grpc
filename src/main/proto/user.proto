@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package net.badata.protobuf.example.proto;
+
+import "google/protobuf/any.proto";
+
+option java_multiple_files = true;
+option java_package = "net.badata.protobuf.example.proto";
+option java_outer_classname = "LibraryProto";
+
+message User {
+    string name = 1;
+    string password = 2;
+}
+
+message RegisteredUser {
+    User user = 1;
+    string token = 2;
+}
+
+service LoginService {
+
+    rpc SignIn (User) returns (RegisteredUser) {}
+
+}
