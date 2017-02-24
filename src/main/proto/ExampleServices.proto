@@ -1,0 +1,36 @@
+// 1. syntax, package, option
+// from: https://www.youtube.com/watch?v=-t57ZQZpjqs
+syntax = "proto3";
+
+package com.example.generated;
+option java_multiple_files = true;
+
+enum Sentiment {
+    HAPPY = 0;
+    SLEEPY = 1;
+    ANGRY = 2;
+    EXCITED = 3;
+}
+
+
+//2. message request, response, types, tags
+message HelloRequest {
+    string name = 1;
+    int32 age = 2;
+    repeated string hobbies = 3;
+    map<string, string> backOfTricks = 4;
+    Sentiment sentiment = 5;
+}
+
+message HelloResponse {
+    string greeting = 1;
+}
+
+service GreetingService {
+    rpc greet(HelloRequest) returns (HelloResponse);
+}
+
+
+//3. enum, map, repeated
+
+//4. service, unary, request/response
