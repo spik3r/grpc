@@ -40,9 +40,9 @@ public class ProtobufClient {
         User userCredentials = Converter.create().toProtobuf(User.class, user);
         System.out.println("userCredentials: " + userCredentials);
         RegisteredUser registeredGrpcUser = blockingStub.signIn(userCredentials);
+
         userToken = registeredGrpcUser.getToken();
-//        DomainRegisteredUser domainRegisteredUser = Converter.create().toDomain(DomainRegisteredUser.class, registeredGrpcUser);
-        DomainRegisteredUser domainRegisteredUser = new DomainRegisteredUser(registeredGrpcUser, userToken);
+        DomainRegisteredUser domainRegisteredUser = Converter.create().toDomain(DomainRegisteredUser.class, registeredGrpcUser);
         System.out.println(domainRegisteredUser.toString());
         if(userToken != null && !userToken.isEmpty()) {
             currentUser = user;

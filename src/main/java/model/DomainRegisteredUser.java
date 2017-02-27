@@ -16,39 +16,50 @@ public class DomainRegisteredUser {
     }
 
     public DomainRegisteredUser(RegisteredUser user, String token) {
-        this.name = user.getUser().getName();
-        this.password = user.getUser().getPassword();
+//        this.name = user.getUser().getName();
+//        this.password = user.getUser().getPassword();
+        this.user = user.getUser();
         this.token = token;
     }
 
     public DomainRegisteredUser(String name, String password, String token) {
-        this.name = name;
-        this.password = password;
+//        this.name = name;
+//        this.password = password;
         this.token = token;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+
     @ProtoField
-    private String name;
-    @ProtoField
-    private String password;
+    private User user;
+//    private String name;
+//    @ProtoField
+//    private String password;
     @ProtoField
     private String token;
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
+//    public String getName() {
+//        return name;
+//    }
+//
+//    public void setName(String name) {
+//        this.name = name;
+//    }
+//
+//    public String getPassword() {
+//        return password;
+//    }
+//
+//    public void setPassword(String password) {
+//        this.password = password;
+//    }
 
     public String getToken() {
         return token;
@@ -60,8 +71,8 @@ public class DomainRegisteredUser {
 
     @Override
     public String toString() {
-        return "name: " + name + " \n" +
-               "password: " + password + " \n" +
+        return "name: " + user.getName() + " \n" +
+               "password: " + user.getPassword() + " \n" +
                "token: " + token;
     }
 }
