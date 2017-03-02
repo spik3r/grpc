@@ -7,19 +7,13 @@ import io.grpc.BindableService;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
-import model.DomainUser;
-import net.badata.protobuf.converter.Converter;
 import net.badata.protobuf.example.proto.LoginServiceGrpc;
 import net.badata.protobuf.example.proto.RegisteredUser;
 import net.badata.protobuf.example.proto.User;
 
 import java.io.IOException;
-import java.util.Random;
 import java.util.UUID;
 
-/**
- * Created by kai-tait on 22/02/2017.
- */
 public class MyGrpcServer {
     public static void main(String[] args) throws InterruptedException, IOException {
         noSsl();

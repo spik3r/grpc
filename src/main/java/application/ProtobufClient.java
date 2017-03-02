@@ -1,7 +1,8 @@
 package application;
 
+import grpc.connection.ClientConnectionManager;
+import grpc.connection.ClientConnectionManagerImpl;
 import io.grpc.ManagedChannel;
-import io.grpc.ManagedChannelBuilder;
 import model.DomainRegisteredUser;
 import model.DomainUser;
 import net.badata.protobuf.converter.Converter;
@@ -21,10 +22,8 @@ public class ProtobufClient {
     private final ManagedChannel channel;
     private final LoginServiceGrpc.LoginServiceBlockingStub blockingStub;
 
-    public ProtobufClient(String host, int port) {
-        channel = ManagedChannelBuilder.forAddress(host, port)
-                .usePlaintext(true)
-                .build();
+    public ProtobufClient(ClientConnectionManager manager) {
+        this.channel = manager.getChannel();
         blockingStub = LoginServiceGrpc.newBlockingStub(channel);
     }
 
@@ -51,10 +50,13 @@ public class ProtobufClient {
         return false;
     }
 
-    public static void main(String[] args) {
-        ProtobufClient protobufClient = new ProtobufClient("localhost", 8888);
+    public static void main(String[] args) throws InterruptedException {
+        ClientConnectionManagerImpl manager = new ClientConnectionManagerImpl();
+        ProtobufClient protobufClient = new ProtobufClient(manager);
+
         DomainUser dummyUser = new DomainUser("test", "asdfghjkl");
         boolean signedIn = protobufClient.signIn(dummyUser);
         System.out.println("Signed in: " + signedIn);
+        manager.shutdown();
     }
 }

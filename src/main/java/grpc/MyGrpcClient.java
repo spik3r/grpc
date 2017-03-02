@@ -1,12 +1,5 @@
 package grpc;
 
-//import com.example.grpc.GreetingServiceGrpc;
-//import com.example.grpc.HelloRequest;
-//import com.example.grpc.HelloResponse;
-//import io.grpc.Deadline;
-//import io.grpc.ManagedChannel;
-//import io.grpc.ManagedChannelBuilder;
-
 import com.example.generated.GreetingServiceGrpc;
 import com.example.generated.HelloRequest;
 import com.example.generated.HelloResponse;
@@ -23,9 +16,6 @@ import java.util.concurrent.TimeUnit;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
 
-/**
- * Created by kai-tait on 22/02/2017.
- */
 public class MyGrpcClient {
     public static void main(String[] args) throws InterruptedException, CertificateException, KeyStoreException, NoSuchAlgorithmException, KeyManagementException, IOException {
         System.out.println();
