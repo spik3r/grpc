@@ -3,13 +3,13 @@ package grpc;
 import com.example.generated.GreetingServiceGrpc;
 import com.example.generated.HelloRequest;
 import com.example.generated.HelloResponse;
+import com.test.generated.LoginServiceGrpc;
+import com.test.generated.RegisteredUser;
+import com.test.generated.User;
 import io.grpc.BindableService;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
-import net.badata.protobuf.example.proto.LoginServiceGrpc;
-import net.badata.protobuf.example.proto.RegisteredUser;
-import net.badata.protobuf.example.proto.User;
 
 import java.io.IOException;
 import java.util.UUID;
