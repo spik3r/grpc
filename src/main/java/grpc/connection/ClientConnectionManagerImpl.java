@@ -11,7 +11,8 @@ public class ClientConnectionManagerImpl implements ClientConnectionManager {
 
     public ClientConnectionManagerImpl() {
                 channel = ManagedChannelBuilder
-                .forAddress("localhost", 8888)
+//                .forAddress("localhost", 10183)
+                .forAddress("paul-vm.macolighting.com", 10183)
                 .usePlaintext(true)
                 .build();
     }

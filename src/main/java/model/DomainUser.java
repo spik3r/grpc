@@ -1,8 +1,8 @@
 package model;
 
+import com.test.generated.User;
 import net.badata.protobuf.converter.annotation.ProtoClass;
 import net.badata.protobuf.converter.annotation.ProtoField;
-import net.badata.protobuf.example.proto.User;
 
 /**
  * Created by kai-tait on 24/02/2017.

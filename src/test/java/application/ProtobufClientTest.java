@@ -1,13 +1,14 @@
 package application;
 
+import com.test.generated.LoginServiceGrpc;
+import com.test.generated.RegisteredUser;
+import com.test.generated.User;
 import grpc.connection.TestClientConnectionManagerImpl;
 import io.grpc.Server;
 import io.grpc.inprocess.InProcessServerBuilder;
 import io.grpc.stub.StreamObserver;
 import model.DomainUser;
-import net.badata.protobuf.example.proto.LoginServiceGrpc;
-import net.badata.protobuf.example.proto.RegisteredUser;
-import net.badata.protobuf.example.proto.User;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

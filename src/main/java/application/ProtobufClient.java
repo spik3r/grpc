@@ -1,14 +1,14 @@
 package application;
 
+import com.test.generated.LoginServiceGrpc;
+import com.test.generated.RegisteredUser;
+import com.test.generated.User;
 import grpc.connection.ClientConnectionManager;
 import grpc.connection.ClientConnectionManagerImpl;
 import io.grpc.ManagedChannel;
 import model.DomainRegisteredUser;
 import model.DomainUser;
 import net.badata.protobuf.converter.Converter;
-import net.badata.protobuf.example.proto.LoginServiceGrpc;
-import net.badata.protobuf.example.proto.RegisteredUser;
-import net.badata.protobuf.example.proto.User;
 
 import java.util.concurrent.TimeUnit;
 

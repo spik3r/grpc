@@ -1,12 +1,12 @@
 syntax = "proto3";
 
-package net.badata.protobuf.example.proto;
+package com.test.generated;
 
 import "google/protobuf/any.proto";
 
 option java_multiple_files = true;
-option java_package = "net.badata.protobuf.example.proto";
-option java_outer_classname = "LibraryProto";
+option java_package = "com.test.generated";
+option java_outer_classname = "droid";
 
 message User {
     string name = 1;

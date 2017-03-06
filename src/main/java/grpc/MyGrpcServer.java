@@ -20,7 +20,7 @@ public class MyGrpcServer {
     }
 
     public static void noSsl() throws IOException, InterruptedException {
-        Server server = ServerBuilder.forPort(8888)
+        Server server = ServerBuilder.forPort(10183)
                 .addService((BindableService) new GreetingServerImpl())
                 .addService((BindableService) new ProtobufServer())
                 .build();
